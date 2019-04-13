@@ -30,7 +30,16 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num > 2 && num % 3 === 0 && num % 5 === 0) {
+        return 'FizzBuzz'
+    }
+    else if (num > 4 && num % 5 === 0) {
+        return 'Buzz'
+    }
+    else if (num > 2 && num % 3 === 0) {
+        return 'Fizz'
+    }
+    else return num
 }
 
 
@@ -46,7 +55,7 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    return (n != 1) ? n * getFactorial(n - 1) : 1;
 }
 
 
@@ -63,7 +72,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    let sum = 0;
+    let i = n1;
+    while (i <= n2) {
+        sum += i;
+        i++
+    }
+    return sum;
 }
 
 
@@ -82,7 +97,32 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    function BubbleSort(A)       
+    {  
+        var n = A.length;
+        for (let a = 0; a < n; a++){
+          for (let j = 0; j < n-1-a; j++ ){
+            if (A[j] > A[j+1]) {
+              let z = A[j];
+              A[j] = A[j+1];
+              A[j+1] = z;
+            }
+          }
+        }                  
+        return A;    
+    }
+    let arr = [];
+    arr.push(a);
+    arr.push(b);
+    arr.push(c);
+
+    let zar = BubbleSort(arr);
+    if (arr.indexOf(0) !== 1 && zar[zar.length -1] < zar[0] + zar[1]) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 
