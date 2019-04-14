@@ -302,7 +302,10 @@ function reverseString(arr) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    let arr = String(num).split('');
+    arr.reverse();
+    let result = arr.join('');
+    return +result;
 }
 
 
@@ -327,7 +330,13 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-    throw new Error('Not implemented');
+    let s = String(ccn);
+    return s.split('')
+        .reverse()
+        .map( (x) => parseInt(x) )
+        .map( (x,idx) => idx % 2 ? x * 2 : x )
+        .map( (x) => x > 9 ? (x % 10) + 1 : x )
+        .reduce( (accum, x) => accum += x ) % 10 === 0;
 }
 
 
@@ -346,7 +355,19 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    if (num < 10) {
+        return num;
+      }    
+      let l = String(num);  
+      while ( l.length !== 1) {
+        let nums = l.split("");
+        let sum = 0;
+        for (let i = 0; i < l.length; i++) {
+          sum += (+nums[i]);
+        }
+        l = String(sum);
+      }  
+      return +l;
 }
 
 
@@ -372,7 +393,62 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(arr) {
-    throw new Error('Not implemented');
+    function lar(i, arr) {
+
+        outer: for (i; i < arr.length; i) {
+          if (i == -1) {i += 1};
+          if (arr[i] == '(') {
+            if (arr[i+1] == ')') {
+              delete arr[i];
+              delete arr[i+1];
+              i -= 1;
+              arr = arr.filter(element => element !== undefined);
+            }
+            else {i += 1} continue;
+          }
+          
+          if (arr[i] == '[') {
+            if (arr[i+1] == ']') {
+              delete arr[i];
+              delete arr[i+1];
+              i -= 1;
+              arr = arr.filter(element => element !== undefined);
+            }
+            else {i += 1} continue;
+          }
+      
+          if (arr[i] == '{') {
+            if (arr[i+1] == '}') {
+              delete arr[i];
+              delete arr[i+1];
+              i -= 1;
+              arr = arr.filter(element => element !== undefined);
+            }
+            else {i += 1} continue;
+          }
+      
+          if (arr[i] == '<') {
+            if (arr[i+1] == '>') {
+              delete arr[i];
+              delete arr[i+1];
+              i -= 1;
+              arr = arr.filter(element => element !== undefined);
+            }
+            else {i += 1} continue;
+          }
+      
+          else break outer;
+        }
+          if (arr == 0) {return true}
+          else {return false}
+      
+        } 
+      
+        var arr = arr.split('');
+      
+          var i = 0;
+          
+        return lar(i,arr);
 }
 
 
