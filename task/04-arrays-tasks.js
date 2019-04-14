@@ -387,7 +387,16 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   
+   if (arr.length === 0) {
+      return 0;
+   }
+   else {
+      let result = [] ;
+      result = arr.filter(function(number) {
+         return !number === false && number > 0 && typeof number === 'number';
+       });
+       return result.length;
+      } 
 }
  
 /** 
@@ -641,7 +650,21 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+    if (indexes.length === 3) {
+       let a = arr[indexes[0]];
+       let b = a[indexes[1]];
+       let c = b[indexes[2]];
+       return c;
+    } 
+    else if (indexes.length === 2) {
+       let a = arr[indexes[0]];
+       let b = a[indexes[1]];
+       return b;
+    }
+    else if (indexes.length === 1) {
+      let a = arr[indexes[0]];
+      return a;
+    }
 }
 
 
