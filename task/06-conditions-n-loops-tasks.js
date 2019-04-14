@@ -197,7 +197,7 @@ function isInsideCircle(circle, point) {
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
  *
- * @param {string} str
+ * @param {string} arr
  * @return {string}
  *
  * @example:
@@ -206,7 +206,19 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    let arr = str.split('');
+    arr = arr.filter(element => element !== ' ');
+    let i = 0;
+    while (i < arr.length) {
+        let s = arr[i];
+        delete arr[i];
+        if (arr.indexOf(s) === -1) {
+            return s;
+        }
+        arr[i] = s;
+        i++
+    }
+    return null;
 }
 
 
@@ -239,7 +251,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
 /**
  * Reverse the specified string (put all chars in reverse order)
  *
- * @param {string} str
+ * @param {string} arr
  * @return {string}
  *
  * @example:
@@ -248,7 +260,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(str) {
+function reverseString(arr) {
     throw new Error('Not implemented');
 }
 
@@ -320,7 +332,7 @@ function getDigitalRoot(num) {
  * (in that order), none of which mis-nest.
  * Brackets include [],(),{},<>
  *
- * @param {string} str
+ * @param {string} arr
  * @return {boolean}
  *
  * @example:
@@ -335,7 +347,7 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true 
  */
-function isBracketsBalanced(str) {
+function isBracketsBalanced(arr) {
     throw new Error('Not implemented');
 }
 
